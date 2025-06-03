@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Fomulário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Dados do usuário</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-input [(ngModel)]="user.nome" type="text" placeholder="Nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input [(ngModel)]="user.email" type="email" placeholder="Email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input [(ngModel)]="user.telefone" type="text" placeholder="Telefone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input [(ngModel)]="user.senha" type="password" placeholder="Senha"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select [(ngModel)]="user.tipo" placeholder="Selecione o tipo">
+          <ion-select-option value="admin">Admin</ion-select-option>
+          <ion-select-option value="usuario">Usuário</ion-select-option>
+          <ion-select-option value="colaborador">Colaborador</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+<ion-button expand="full" (click)="saveUser()">Cadastrar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
