@@ -13,6 +13,7 @@
         <p>id: {{user.id}}</p>
         <p>Email: {{ user.email }}</p>
         <p>Telefone: {{ user.telefone }}</p>
+        <p>Tipo: {{user.tipo}}</p>
       </ion-label>
       <ion-button color="danger" (click)="deleteUser(user.id)">Deletar</ion-button>
       <ion-button color="primary" (click)="goToUserForm(user.id)">Editar</ion-button>

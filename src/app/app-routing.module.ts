@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'evento-list',
     loadChildren: () => import('./Components/evento-list/evento-list.module').then( m => m.EventoListPageModule)
+  },
+  {
+    path: 'score',
+    loadChildren: () => import('./Components/score/score.module').then( m => m.ScorePageModule)
   }
 ];
 
