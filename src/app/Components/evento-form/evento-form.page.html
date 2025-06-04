@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Formulário de Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Dados do Evento</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-input [(ngModel)]="evento.evnome" type="text" placeholder="Nome do Evento"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea [(ngModel)]="evento.evdesc" placeholder="Descrição do Evento"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-input [(ngModel)]="evento.evend" type="text" placeholder="Local"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-datetime [(ngModel)]="evento.evdata" display-format="DD/MM/YYYY HH:mm" placeholder="Data e Horário"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-select [(ngModel)]="evento.evtipo" placeholder="Selecione o tipo">
+          <ion-select-option value="corporativo">Corporativo</ion-select-option>
+          <ion-select-option value="social">Social</ion-select-option>
+          <ion-select-option value="acadêmico">Acadêmico</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button expand="full" (click)="saveEvento()">Cadastrar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

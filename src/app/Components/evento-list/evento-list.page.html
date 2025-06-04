@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Eventos</ion-title>
+    <ion-button (click)="goToEventoForm()" slot="end">Adicionar Evento</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let evento of eventos">
+      <ion-label>
+        <h2>{{ evento.evnome }}</h2>
+        <p>ID: {{ evento.evid }}</p>
+        <p>Descrição: {{ evento.evdesc }}</p>
+        <p>Local: {{ evento.evend }}</p>
+        <p>Data: {{ evento.evdata }}</p>
+        <p>Tipo: {{ evento.evtipo }}</p>
+      </ion-label>
+      <ion-button color="danger" (click)="deleteEvento(evento.evid)">Deletar</ion-button>
+      <ion-button color="primary" (click)="goToEventoForm(evento.evid)">Editar</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

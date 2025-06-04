@@ -22,6 +22,18 @@ const routes: Routes = [
   {
     path: 'user-list',
     loadChildren: () => import('./Components/user-list/user-list.module').then(m => m.UserListPageModule)
+  },
+  {
+    path: 'evento-form',
+    loadChildren: () => import('./Components/evento-form/evento-form.module').then( m => m.EventoFormPageModule)
+  },
+  {
+    path: 'evento-form/:id',
+    loadChildren: () => import('./Components/evento-form/evento-form.module').then( m => m.EventoFormPageModule)
+  },
+  {
+    path: 'evento-list',
+    loadChildren: () => import('./Components/evento-list/evento-list.module').then( m => m.EventoListPageModule)
   }
 ];
 
