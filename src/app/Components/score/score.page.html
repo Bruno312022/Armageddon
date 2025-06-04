@@ -1,13 +1,19 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>score</ion-title>
+    <ion-title>Sistema de Pontos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">score</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Seus Pontos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h2>{{ score }} pontos</h2>
+      <ion-button expand="full" (click)="selectFile()">Enviar Certificado</ion-button>
+      <input type="file" id="fileInput" (change)="uploadFile($event)" accept=".pdf" hidden>
+
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -38,6 +38,14 @@ const routes: Routes = [
   {
     path: 'score',
     loadChildren: () => import('./Components/score/score.module').then( m => m.ScorePageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./Components/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./Components/home/home.module').then( m => m.HomePageModule)
   }
 ];
 

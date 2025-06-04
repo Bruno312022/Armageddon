@@ -113,7 +113,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     } else {
         exit(json_encode(["error" => "Parâmetro 'id' não informado para exclusão."]));
     }
+
 }
+
+
+
 
     
 

@@ -33,4 +33,13 @@ updateUser(id: number, user: any): Observable<any> {
   getUserById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}?id=${id}`);
   }
+  // método para autenticação no login
+loginUser(email: string, senha: string): Observable<any> {
+  return this.http.post<any>('http://localhost/projeto/recompensa_verde/src/backend/controllers/login.php', { email, senha });
+}
+
+
+
+
+
 }
