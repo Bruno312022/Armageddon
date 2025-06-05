@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../backend/Service/user.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-form',
@@ -12,7 +13,12 @@ export class UserFormPage implements OnInit {
   userId!: number;
   user = { nome: '', email: '', telefone: '', senha: '', tipo: 'usuario' };
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute, 
+    private userService: UserService, 
+    private router: Router,
+    private menuCtrl: MenuController  
+  ) {}
 
   ngOnInit() {
     this.userId = Number(this.route.snapshot.paramMap.get('id')); // Obtendo ID da rota
@@ -51,5 +57,13 @@ export class UserFormPage implements OnInit {
         }
       });
     }
+  }
+
+    async toggleMenu() {
+    await this.menuCtrl.toggle();
+  }
+
+  cancelar() {
+    this.router.navigate(['/user-list']);
   }
 }

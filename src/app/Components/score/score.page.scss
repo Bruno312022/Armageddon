@@ -1,0 +1,260 @@
+:host {
+  // Cores base mais suaves
+  --light-mint: #E8F5E9;
+  --soft-sage: #C8E6C9;
+  --pale-green: #B2DFBC;
+  --fresh-mint: #A5D6A7;
+  --light-leaf: #81C784;
+  --bg-start: #85bb48;
+  --bg-middle: #a4cba8;
+  --bg-end: #7bba66;
+  
+  // Gradientes mais suaves
+  --gradient-background: linear-gradient(
+    135deg,
+    var(--bg-start) 0%,
+    var(--bg-middle) 35%,
+    var(--pale-green) 50%,
+    var(--bg-middle) 65%,
+    var(--bg-end) 100%
+  );
+
+  --dark-bg: #1a4731;
+  --dark-surface: #2c5a43;
+  --pastel-green-primary: #4CAF50;
+  --pastel-green-light: #ffffff;
+  --pastel-green-dark: #388E3C;
+  --pastel-accent: #81C784;
+  --text-primary: #59845d;
+  --text-secondary: #C8E6C9;
+  --card-bg: #ffffff;
+
+  ion-header.dark-pastel-header {
+    ion-toolbar {
+      --background: linear-gradient(145deg, var(--dark-bg), var(--dark-surface));
+      --border-color: var(--pastel-green-dark);
+      border-bottom: 1px solid var(--pastel-green-dark);
+      padding: 4px 0;
+    }
+
+    .dark-pastel-toolbar {
+      .toolbar-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 8px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        .menu-container {
+          .menu-button {
+            --padding-start: 8px;
+            --padding-end: 8px;
+            height: 42px;
+            width: 42px;
+            position: relative;
+            
+            &::after {
+              content: '';
+              position: absolute;
+              inset: 4px;
+              background: linear-gradient(145deg, var(--pastel-green-light), var(--pastel-green-primary));
+              opacity: 0.1;
+              border-radius: 8px;
+              transition: opacity 0.3s ease;
+            }
+            
+            &:hover::after {
+              opacity: 0.2;
+            }
+            
+            .menu-icon {
+              color: var(--pastel-green-light);
+              font-size: 24px;
+              transition: color 0.3s ease;
+            }
+
+            &:hover .menu-icon {
+              color: var(--pastel-accent);
+            }
+          }
+        }
+
+        .spacer {
+          flex: 1;
+        }
+
+        .user-container {
+          .user-button {
+            --padding-start: 0;
+            --padding-end: 0;
+            margin: 0;
+            height: 42px;
+            width: 42px;
+            
+            .user-avatar {
+              width: 35px;
+              height: 35px;
+              border-radius: 50%;
+              object-fit: cover;
+              border: 2px solid var(--pastel-green-primary);
+              transition: all 0.3s ease;
+
+              &:hover {
+                border-color: var(--pastel-accent);
+                transform: scale(1.05);
+                box-shadow: 0 0 15px rgba(152, 201, 163, 0.3);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .page-title {
+      background: linear-gradient(145deg, var(--dark-bg), var(--dark-surface));
+      padding: 20px 24px;
+      position: relative;
+      
+      h1 {
+        color: var(--pastel-green-light);
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0;
+        text-align: left;
+        position: relative;
+        display: inline-block;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -8px;
+          left: 0;
+          width: 60px;
+          height: 3px;
+          background: var(--pastel-green-light);
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+
+  ion-content {
+    --background: var(--gradient-background);
+    background-attachment: fixed;
+
+    .score-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      margin: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+      ion-card-header {
+        background: linear-gradient(145deg, var(--dark-bg), var(--dark-surface));
+        margin: -20px -20px 20px;
+        padding: 20px;
+        border-radius: 16px 16px 0 0;
+
+        ion-card-title {
+          color: var(--pastel-green-light);
+          font-size: 1.5rem;
+          font-weight: 600;
+          margin: 0;
+        }
+      }
+
+      ion-card-content {
+        .score-display {
+          background: rgba(76, 175, 80, 0.1);
+          border-radius: 12px;
+          padding: 24px;
+          text-align: center;
+          margin-bottom: 24px;
+
+          .score-value {
+            color: var(--pastel-green-primary);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+          }
+
+          .score-label {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin: 8px 0 0;
+          }
+        }
+
+        .upload-button {
+          --background: var(--pastel-green-primary);
+          --background-hover: var(--pastel-green-dark);
+          --border-radius: 10px;
+          --padding-top: 20px;
+          --padding-bottom: 20px;
+          font-weight: 500;
+          text-transform: none;
+          letter-spacing: 0.5px;
+          margin: 0;
+
+          ion-icon {
+            margin-right: 8px;
+            font-size: 1.2rem;
+          }
+
+          &:hover {
+            --background: var(--pastel-green-dark);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Media Queries para responsividade
+@media (max-width: 768px) {
+  :host {
+    ion-header.dark-pastel-header {
+      .dark-pastel-toolbar .toolbar-content {
+        padding: 0 4px;
+      }
+
+      .page-title {
+        padding: 16px 20px;
+
+        h1 {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    ion-content .score-card {
+      margin: 12px;
+      padding: 16px;
+
+      ion-card-header {
+        margin: -16px -16px 16px;
+        padding: 16px;
+
+        ion-card-title {
+          font-size: 1.3rem;
+        }
+      }
+
+      ion-card-content {
+        .score-display {
+          padding: 20px;
+
+          .score-value {
+            font-size: 3rem;
+          }
+
+          .score-label {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

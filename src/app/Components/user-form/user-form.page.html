@@ -1,41 +1,66 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Fomulário</ion-title>
+<ion-header class="dark-pastel-header">
+  <ion-toolbar class="dark-pastel-toolbar">
+    <div class="toolbar-content">
+      <div class="menu-container">
+        <ion-button fill="clear" class="menu-button" (click)="toggleMenu()">
+          <ion-icon name="menu" slot="icon-only" class="menu-icon"></ion-icon>
+        </ion-button>
+      </div>
+      <ion-title>Formulário</ion-title>
+      <div class="user-container">
+        <ion-button fill="clear" class="user-button">
+          <img src="assets/doppio.jpeg" class="user-avatar" alt="User Avatar">
+        </ion-button>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Dados do usuário</ion-card-title>
-    </ion-card-header>
+<ion-content class="form-content">
+  <div class="form-container">
+    <ion-card class="user-form-card">
+      <ion-card-header>
+        <ion-card-title>Dados do usuário</ion-card-title>
+      </ion-card-header>
 
-    <ion-card-content>
-      <ion-item>
-        <ion-input [(ngModel)]="user.nome" type="text" placeholder="Nome"></ion-input>
-      </ion-item>
+      <ion-card-content>
+        <div class="form-fields">
+          <ion-item class="form-item">
+            <ion-input [(ngModel)]="user.nome" type="text" placeholder="Digite seu nome"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-input [(ngModel)]="user.email" type="email" placeholder="Email"></ion-input>
-      </ion-item>
+          <ion-item class="form-item">
+            <ion-input [(ngModel)]="user.email" type="email" placeholder="Digite seu email"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-input [(ngModel)]="user.telefone" type="text" placeholder="Telefone"></ion-input>
-      </ion-item>
+          <ion-item class="form-item">
+            <ion-input [(ngModel)]="user.telefone" type="text" placeholder="Digite seu telefone"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-input [(ngModel)]="user.senha" type="password" placeholder="Senha"></ion-input>
-      </ion-item>
+          <ion-item class="form-item">
+            <ion-input [(ngModel)]="user.senha" type="password" placeholder="Digite sua senha"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-select [(ngModel)]="user.tipo" placeholder="Selecione o tipo">
-          <ion-select-option value="admin">Admin</ion-select-option>
-          <ion-select-option value="usuario">Usuário</ion-select-option>
-          <ion-select-option value="colaborador">Colaborador</ion-select-option>
-        </ion-select>
-      </ion-item>
+          <ion-item class="form-item select-type">
+            <ion-select [(ngModel)]="user.tipo" placeholder="Selecione o tipo" interface="action-sheet">
+              <ion-select-option value="admin">Admin</ion-select-option>
+              <ion-select-option value="usuario">Usuário</ion-select-option>
+              <ion-select-option value="colaborador">Colaborador</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
 
-<ion-button expand="full" (click)="saveUser()">Cadastrar</ion-button>
-    </ion-card-content>
-  </ion-card>
+        <div class="form-actions">
+          <ion-button expand="full" (click)="saveUser()" class="save-button">
+            <ion-icon name="save-outline" slot="start"></ion-icon>
+            Salvar
+          </ion-button>
+          <ion-button expand="full" (click)="cancelar()" class="cancel-button">
+            <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+            Cancelar
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

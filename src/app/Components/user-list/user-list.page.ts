@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../backend/Service/user.service';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-user-list',
@@ -11,7 +13,11 @@ import { Router } from '@angular/router';
 export class UserListPage implements OnInit {
   users: any[] = [];
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private router: Router,
+     private menuCtrl: MenuController
+    ) { }
 
   ngOnInit() {
     this.loadUsers();
@@ -45,5 +51,9 @@ export class UserListPage implements OnInit {
     this.router.navigate(['/user-form']); // Redireciona para criação
   }
 }
+
+async toggleMenu() {
+    await this.menuCtrl.toggle();
+  }
 
 }

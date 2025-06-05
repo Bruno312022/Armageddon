@@ -1,22 +1,49 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Lista de Usuários</ion-title>
-    <ion-button (click)="goToUserForm()" slot="end">Adicionar Usuário</ion-button>
-  </ion-toolbar>
-</ion-header>
+<div class="ion-page" id="main-content">
+  <ion-header class="dark-pastel-header">
+    <ion-toolbar class="dark-pastel-toolbar">
+      <div class="toolbar-content">
+        <div class="menu-container">
+          <ion-button fill="clear" class="menu-button" (click)="toggleMenu()">
+            <ion-icon name="menu" slot="icon-only" class="menu-icon"></ion-icon>
+          </ion-button>
+        </div>
+        <ion-title>Lista de Usuários</ion-title>
+        <div class="user-container">
+          <ion-button fill="clear" class="user-button">
+            <img src="assets/doppio.jpeg" class="user-avatar" alt="User Avatar">
+          </ion-button>
+        </div>
+      </div>
+    </ion-toolbar>
+    <div class="action-bar">
+      <ion-button (click)="goToUserForm()" class="add-button">
+        <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+        Adicionar Usuário
+      </ion-button>
+    </div>
+  </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let user of users">
-      <ion-label>
-        <h2>{{ user.nome }}</h2>
-        <p>id: {{user.id}}</p>
-        <p>Email: {{ user.email }}</p>
-        <p>Telefone: {{ user.telefone }}</p>
-        <p>Tipo: {{user.tipo}}</p>
-      </ion-label>
-      <ion-button color="danger" (click)="deleteUser(user.id)">Deletar</ion-button>
-      <ion-button color="primary" (click)="goToUserForm(user.id)">Editar</ion-button>
-    </ion-item>
-  </ion-list>
-</ion-content>
+  <ion-content>
+    <ion-list class="user-list">
+      <ion-item *ngFor="let user of users" class="user-item">
+        <ion-label>
+          <h2>{{ user.nome }}</h2>
+          <p>id: {{user.id}}</p>
+          <p>Email: {{ user.email }}</p>
+          <p>Telefone: {{ user.telefone }}</p>
+          <p>Tipo: {{user.tipo}}</p>
+        </ion-label>
+        <div class="action-buttons">
+          <ion-button color="danger" (click)="deleteUser(user.id)" class="delete-button">
+            <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+            Deletar
+          </ion-button>
+          <ion-button color="primary" (click)="goToUserForm(user.id)" class="edit-button">
+            <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+            Editar
+          </ion-button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</div>

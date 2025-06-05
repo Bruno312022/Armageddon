@@ -1,41 +1,55 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header class="dark-pastel-header">
+  <ion-toolbar class="dark-pastel-toolbar">
     <ion-title>Formulário de Evento</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card>
+<ion-content class="form-content">
+  <ion-card class="event-form-card">
     <ion-card-header>
       <ion-card-title>Dados do Evento</ion-card-title>
     </ion-card-header>
 
+
     <ion-card-content>
-      <ion-item>
+      <ion-item class="form-item">
         <ion-input [(ngModel)]="evento.evnome" type="text" placeholder="Nome do Evento"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="form-item">
         <ion-textarea [(ngModel)]="evento.evdesc" placeholder="Descrição do Evento"></ion-textarea>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="form-item">
         <ion-input [(ngModel)]="evento.evend" type="text" placeholder="Local"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-datetime [(ngModel)]="evento.evdata" display-format="DD/MM/YYYY HH:mm" placeholder="Data e Horário"></ion-datetime>
+      <ion-item class="form-item">
+        <ion-datetime [(ngModel)]="evento.evdata" display-format="DD/MM/YYYY HH:mm" placeholder="Data e Horário"
+          class="custom-datetime"></ion-datetime>
       </ion-item>
 
-      <ion-item>
-        <ion-select [(ngModel)]="evento.evtipo" placeholder="Selecione o tipo">
-          <ion-select-option value="corporativo">Corporativo</ion-select-option>
-          <ion-select-option value="social">Social</ion-select-option>
-          <ion-select-option value="acadêmico">Acadêmico</ion-select-option>
-        </ion-select>
-      </ion-item>
+      <div class="select-type-container">
+        <ion-item class="form-item select-type">
+          <ion-select [(ngModel)]="evento.evtipo" placeholder="tipo de evento" interface="action-sheet">
 
-      <ion-button expand="full" (click)="saveEvento()">Cadastrar</ion-button>
+            <ion-select-option value="palestras">Palestra</ion-select-option>
+            <ion-select-option value="oficinas">Oficina</ion-select-option>
+            <ion-select-option value="campanhas">Campanha</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+        <div class="form-actions">
+        <ion-button expand="full" (click)="saveEvento()" class="save-button">
+          <ion-icon name="save-outline" slot="start"></ion-icon>
+          Cadastrar
+        </ion-button>
+        <ion-button expand="full" (click)="cancelar()" class="cancel-button">
+          <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+          Cancelar
+        </ion-button>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>

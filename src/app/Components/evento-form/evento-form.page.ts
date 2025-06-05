@@ -10,9 +10,19 @@ import { EventoService } from '../../../backend/Service/evento.service';
 })
 export class EventoFormPage implements OnInit {
   eventoId!: number;
-  evento = { evnome: '', evdesc: '', evend: '', evtipo: 'corporativo', evdata: '' };
+  evento = { 
+    evnome: '',
+    evdesc: '', 
+    evend: '', 
+    evtipo: 'corporativo', 
+    evdata: '' 
+  };
 
-  constructor(private route: ActivatedRoute, private eventoService: EventoService, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute, 
+    private eventoService: EventoService, 
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.eventoId = Number(this.route.snapshot.paramMap.get('id')); // Obtendo ID da rota
@@ -51,5 +61,9 @@ export class EventoFormPage implements OnInit {
         }
       });
     }
+  }
+
+   cancelar() {
+    this.router.navigate(['/evento-list']);
   }
 }

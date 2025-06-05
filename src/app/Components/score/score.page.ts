@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-score',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ScorePage implements OnInit {
   score: number = 0;
 
-  constructor() {}
+  constructor(private menuCtrl: MenuController) {}
 
   ngOnInit() {
     this.loadScore(); // Carrega os pontos ao iniciar
@@ -30,15 +31,18 @@ export class ScorePage implements OnInit {
     if (file && file.type === 'application/pdf') {
       this.score += 100;
       this.saveScore(); // Salva os pontos após incrementar
-      alert('PDF enviado com sucesso! Você ganhou 50 pontos.');
+      alert('Certificado enviado com sucesso! Você ganhou 100 pontos.');
     } else {
       alert('Por favor, selecione um arquivo PDF.');
     }
   }
 
   selectFile() {
-  const fileInput = document.getElementById('fileInput') as HTMLInputElement;
-  fileInput.click();
-}
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    fileInput.click();
+  }
 
+  toggleMenu() {
+    this.menuCtrl.toggle();
+  }
 }

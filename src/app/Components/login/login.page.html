@@ -1,24 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content class="ion-padding">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Entre na sua conta</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" [(ngModel)]="email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Senha</ion-label>
-        <ion-input type="password" [(ngModel)]="senha"></ion-input>
-      </ion-item>
-      <ion-button expand="full" (click)="login()">Entrar</ion-button>
-    </ion-card-content>
-  </ion-card>
+
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="card-container">
+    <ion-card class="login-card">
+      <ion-card-header class="login-header">
+        <ion-icon name="person-circle-outline" class="login-icon"></ion-icon>
+        <ion-title size="large">Login</ion-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item lines="full">
+          <ion-input type="email" placeholder="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-input type="password" placeholder="senha" [(ngModel)]="senha"></ion-input>
+        </ion-item>
+
+        <div class="login-buttons">
+          <ion-button expand="block" (click)="login()" color="success">Entrar</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

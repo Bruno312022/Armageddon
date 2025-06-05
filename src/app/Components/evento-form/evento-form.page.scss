@@ -1,0 +1,409 @@
+:host {
+  // Variáveis de cores
+  --dark-bg: #1a4731;
+  --dark-surface: #2c5a43;
+  --pastel-green-primary: #4CAF50;
+  --pastel-green-light: #ffffff;
+  --pastel-green-dark: #388E3C;
+  --pastel-accent: #81C784;
+  --text-primary: #ffffff;
+  --text-secondary: #C8E6C9;
+  --gradient-background: linear-gradient(135deg, #85bb48 0%, #a4cba8 35%, #B2DFBC 50%, #a4cba8 65%, #7bba66 100%);
+
+  // Estilos para o popup do select
+  ::ng-deep .alert-wrapper.sc-ion-alert-md {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    max-width: 340px;
+
+    .alert-head.sc-ion-alert-md {
+      background: linear-gradient(145deg, var(--dark-bg), var(--dark-surface));
+      padding: 20px;
+      text-align: center;
+
+      .alert-title.sc-ion-alert-md {
+        color: var(--text-primary);
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+
+    .alert-message.sc-ion-alert-md {
+      color: var(--dark-bg);
+      font-size: 1rem;
+      padding: 20px;
+      max-height: none;
+    }
+
+    .alert-radio-group.sc-ion-alert-md {
+      padding: 0 8px;
+      max-height: none;
+      border: none;
+
+      .alert-radio-button.sc-ion-alert-md {
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background: rgba(76, 175, 80, 0.1);
+        }
+
+        .alert-radio-label.sc-ion-alert-md {
+          color: var(--dark-bg);
+          font-size: 1rem;
+          padding-left: 52px;
+        }
+
+        &[aria-checked="true"] {
+          background: rgba(76, 175, 80, 0.15);
+
+          .alert-radio-inner.sc-ion-alert-md {
+            background-color: var(--pastel-green-primary);
+            border-color: var(--pastel-green-primary);
+            transform: scale(1);
+          }
+
+          .alert-radio-label.sc-ion-alert-md {
+            color: var(--pastel-green-primary);
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .alert-button-group.sc-ion-alert-md {
+      padding: 16px;
+      justify-content: space-between;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+      .alert-button.sc-ion-alert-md {
+        margin: 0;
+        flex: 1;
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: var(--pastel-green-primary);
+        transition: background-color 0.3s ease;
+        border-radius: 8px;
+        padding: 12px;
+
+        &:hover {
+          background: rgba(76, 175, 80, 0.1);
+        }
+
+        &.alert-button-role-cancel {
+          color: #f44336;
+
+          &:hover {
+            background: rgba(244, 67, 54, 0.1);
+          }
+        }
+
+        .alert-button-inner.sc-ion-alert-md {
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  // Estilos para a action sheet personalizada
+  ::ng-deep .custom-action-sheet {
+    --background: #ffffff !important;
+    
+    .action-sheet-group {
+      background: #ffffff !important;
+      border-radius: 20px 20px 0 0 !important;
+      overflow: hidden;
+
+      .action-sheet-title {
+        color: var(--dark-bg) !important;
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+        padding: 20px !important;
+        background: #f5f5f5 !important;
+      }
+
+      .action-sheet-button {
+        color: var(--dark-bg) !important;
+        font-size: 1rem !important;
+        height: auto !important;
+        padding: 16px !important;
+        background: #ffffff !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+        
+        &:last-child {
+          border-bottom: none !important;
+        }
+
+        &.action-sheet-selected {
+          color: var(--pastel-green-primary) !important;
+          font-weight: 500 !important;
+          background: rgba(76, 175, 80, 0.1) !important;
+
+          &::before {
+            content: '✓';
+            margin-right: 8px;
+            color: var(--pastel-green-primary);
+          }
+        }
+
+        &:hover {
+          background: rgba(76, 175, 80, 0.05) !important;
+        }
+      }
+    }
+
+    .action-sheet-group-cancel {
+      background: #ffffff !important;
+      margin-top: 8px !important;
+      border-radius: 20px 20px 0 0 !important;
+
+      .action-sheet-button {
+        color: #f44336 !important;
+        font-weight: 500 !important;
+
+        &:hover {
+          background: rgba(244, 67, 54, 0.05) !important;
+        }
+      }
+    }
+  }
+
+  // Estilo do backdrop (fundo escuro)
+  ::ng-deep .action-sheet-backdrop {
+    background: rgba(0, 0, 0, 0.4) !important;
+  }
+}
+
+// Estilos do Header
+.dark-pastel-header {
+  ion-toolbar.dark-pastel-toolbar {
+    --background: linear-gradient(145deg, var(--dark-bg), var(--dark-surface));
+    --border-color: var(--pastel-green-dark);
+    border-bottom: 1px solid var(--pastel-green-dark);
+    
+    ion-title {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+  }
+}
+
+// Estilos do Conteúdo
+.form-content {
+  --background: var(--gradient-background);
+  background-attachment: fixed;
+
+  .event-form-card {
+    margin: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    
+    ion-card-header {
+      background: linear-gradient(145deg, var(--dark-bg), var(--dark-surface));
+      padding: 20px;
+      
+      ion-card-title {
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+      }
+    }
+
+    ion-card-content {
+      padding: 24px;
+
+      .form-item {
+        --background: transparent;
+        --border-color: rgba(76, 175, 80, 0.2);
+        --border-radius: 8px;
+        --border-width: 1px;
+        --padding-start: 0;
+        --padding-end: 0;
+        --inner-padding-end: 0;
+        margin-bottom: 16px;
+        
+        &:last-child {
+          margin-bottom: 24px;
+        }
+
+        ion-input, ion-textarea {
+          --padding-start: 16px;
+          --padding-end: 16px;
+          --placeholder-color: rgba(44, 90, 67, 0.6);
+          --placeholder-opacity: 1;
+          color: var(--dark-bg);
+          font-size: 1rem;
+          min-height: 48px;
+          
+          &.ion-valid {
+            --highlight-color: var(--pastel-green-primary);
+          }
+        }
+
+        &.item-has-focus {
+          --border-color: var(--pastel-green-primary);
+          --highlight-color: var(--pastel-green-primary);
+        }
+
+        // Estilo específico para o datetime
+        .custom-datetime {
+          --background: #e8f5e9;
+          --placeholder-color: var(--dark-surface);
+          --placeholder-opacity: 0.7;
+          padding: 8px 16px;
+          border-radius: 8px;
+          color: var(--dark-bg);
+          
+          &::part(calendar-body) {
+            background-color: #e8f5e9;
+          }
+          
+          &::part(calendar-day) {
+            color: var(--dark-bg);
+          }
+          
+          &::part(calendar-day-selected) {
+            background-color: var(--pastel-green-primary);
+            color: white;
+          }
+        }
+      }
+
+      // Estilo do container do select de tipo
+      .select-type-container {
+        margin-bottom: 20px;
+        
+        .select-type {
+          background: rgba(255, 255, 255, 0.9);
+          border-radius: 10px;
+          margin: 0;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          
+          &.item-has-focus {
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+          }
+
+          ion-label {
+            color: var(--dark-surface);
+            font-weight: 500;
+            margin-bottom: 8px;
+            
+            &.label-floating {
+              transform: translateY(-12px) scale(0.85);
+              color: var(--pastel-green-primary);
+            }
+          }
+
+          .custom-select {
+            padding: 12px 0;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--dark-bg);
+            font-weight: 500;
+            
+            &::part(icon) {
+              color: var(--pastel-green-primary);
+              opacity: 1;
+            }
+            
+            &::part(text) {
+              color: var(--dark-bg);
+            }
+          }
+        }
+      }
+
+      .form-actions {
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .save-button {
+          --background: linear-gradient(135deg, #4CAF50, #45a049);
+          --background-hover: linear-gradient(135deg, #45a049, #388E3C);
+          --border-radius: 25px;
+          --padding-top: 16px;
+          --padding-bottom: 16px;
+          --box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+          font-weight: 500;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            --box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+            transform: translateY(-1px);
+          }
+
+          ion-icon {
+            margin-right: 8px;
+            font-size: 20px;
+          }
+        }
+
+        .cancel-button {
+          --background: linear-gradient(135deg, #f44336, #e53935);
+          --background-hover: linear-gradient(135deg, #e53935, #d32f2f);
+          --border-radius: 25px;
+          --padding-top: 16px;
+          --padding-bottom: 16px;
+          --box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+          font-weight: 500;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            --box-shadow: 0 6px 16px rgba(244, 67, 54, 0.4);
+            transform: translateY(-1px);
+          }
+
+          ion-icon {
+            margin-right: 8px;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .event-form-card {
+    margin: 16px !important;
+    
+    ion-card-header {
+      padding: 16px !important;
+      
+      ion-card-title {
+        font-size: 1.3rem !important;
+      }
+    }
+
+    ion-card-content {
+      padding: 16px !important;
+
+      .form-item {
+        margin-bottom: 12px !important;
+        
+        ion-input, ion-textarea, ion-select, ion-datetime {
+          font-size: 0.95rem !important;
+          min-height: 44px !important;
+        }
+      }
+
+      .form-actions {
+        margin-top: 24px !important;
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventoService } from '../../../backend/Service/evento.service';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-evento-list',
@@ -11,7 +12,11 @@ import { Router } from '@angular/router';
 export class EventoListPage implements OnInit {
   eventos: any[] = [];
 
-  constructor(private eventoService: EventoService, private router: Router) { }
+  constructor(
+    private eventoService: EventoService, 
+    private router: Router,
+    private menuCtrl: MenuController
+  ) {}
 
   ngOnInit() {
     this.loadEventos();
@@ -32,9 +37,14 @@ export class EventoListPage implements OnInit {
 
   // Método para deletar um evento
   deleteEvento(id: number) {
-    this.eventoService.deleteEvento(id).subscribe(response => {
-      console.log('Evento deletado:', response);
-      this.loadEventos(); // Atualizar lista após exclusão
+    this.eventoService.deleteEvento(id).subscribe({
+      next: () => {
+        console.log('Evento deletado com sucesso');
+        this.loadEventos(); // Atualizar lista após exclusão
+      },
+      error: (error) => {
+        console.error('Erro ao deletar evento:', error);
+      }
     });
   }
 
@@ -45,5 +55,9 @@ export class EventoListPage implements OnInit {
     } else {
       this.router.navigate(['/evento-form']); // Redireciona para criação
     }
+  }
+
+  async toggleMenu() {
+    await this.menuCtrl.toggle();
   }
 }
