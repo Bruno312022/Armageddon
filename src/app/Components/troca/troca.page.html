@@ -1,13 +1,181 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>troca</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="ion-page" id="main-content">
+  <ion-header class="dark-pastel-header" [translucent]="true">
+    <ion-toolbar class="dark-pastel-toolbar">
+      <div class="toolbar-content">
+        <div class="menu-container">
+          <ion-button fill="clear" class="menu-button" (click)="toggleMenu()">
+            <ion-icon name="menu" slot="icon-only" class="menu-icon"></ion-icon>
+          </ion-button>
+        </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">troca</ion-title>
+        <div class="search-container">
+          <div class="search-wrapper" [class.active]="isSearchActive">
+            <button class="search-button" (click)="toggleSearch($event)">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+            <input type="text" 
+                   class="search-input" 
+                   placeholder="Pesquisar estabelecimentos..." 
+                   (click)="$event.stopPropagation()"
+                   [(ngModel)]="searchQuery"
+                   (input)="onSearch()">
+          </div>
+        </div>
+
+        <div class="user-container">
+          <ion-avatar class="user-avatar">
+            <img src="assets/doppio.jpeg" alt="Logo Doppio">
+          </ion-avatar>
+        </div>
+      </div>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+
+  <ion-content class="dark-pastel-content">
+    <!-- Título Principal -->
+    <div class="section-title-container">
+      <h2 class="main-section-title">Estabelecimentos Parceiros</h2>
+    </div>
+
+    <!-- Lista de Estabelecimentos -->
+    <div class="section-container estabelecimentos">
+      <div class="horizontal-scroll-wrapper">
+        <button class="nav-button prev" (click)="scrollSection('estabelecimentos', 'prev')">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </button>
+
+        <div class="horizontal-scroll" #estabelecimentosScroll>
+          <div class="cards-track">
+            <ion-card *ngFor="let estabelecimento of estabelecimentos">
+              <img [src]="estabelecimento.imagem" [alt]="estabelecimento.nome">
+              <ion-card-content>
+                <div class="card-header">
+                  <h3>{{ estabelecimento.nome }}</h3>
+                </div>
+                <p>{{ estabelecimento.descricao }}</p>
+                
+                <!-- Lista de Produtos -->
+                <div class="produtos-lista">
+                  <div class="produto-item" *ngFor="let produto of estabelecimento.produtos">
+                    <div class="produto-info">
+                      <div class="produto-icon">
+                        <ion-icon [name]="produto.icon"></ion-icon>
+                      </div>
+                      <div class="produto-detalhes">
+                        <h4>{{ produto.nome }}</h4>
+                        <p class="pontos">{{ produto.pontos }} pontos</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-footer">
+                  <div class="endereco-info">
+                    <ion-icon name="location-outline"></ion-icon>
+                    <span>{{ estabelecimento.endereco }}</span>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+
+        <button class="nav-button next" (click)="scrollSection('estabelecimentos', 'next')">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Sobre Nós</h4>
+          <p>A Recompensa Verde é uma iniciativa dedicada à promoção da sustentabilidade através de parcerias com estabelecimentos locais.</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contato</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <ion-icon name="mail-outline"></ion-icon>
+              <span>contato&#64;recompensaverde.com.br</span>
+            </div>
+            <div class="contact-item">
+              <ion-icon name="call-outline"></ion-icon>
+              <span>(92) 98888-7777</span>
+            </div>
+            <div class="contact-item">
+              <ion-icon name="location-outline"></ion-icon>
+              <span>Manaus, AM - Brasil</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Redes Sociais</h4>
+          <div class="social-links">
+            <a href="#" target="_blank">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="#" target="_blank">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+            <a href="#" target="_blank">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+            <a href="#" target="_blank">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2024 Recompensa Verde. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </ion-content>
+</div>
+
+<!-- Menu Lateral -->
+<ion-menu contentId="main-content" class="dark-pastel-menu">
+  <ion-header class="menu-header">
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="menu-content">
+    <div class="user-profile">
+      <ion-avatar>
+        <img src="assets/doppio.jpeg" alt="Foto do Usuário">
+      </ion-avatar>
+      <h2>Bem-vindo</h2>
+      <p>Usuário</p>
+    </div>
+
+    <ion-list lines="none">
+      <ion-item routerLink="/home" routerLinkActive="active">
+        <ion-icon name="home-outline" slot="start"></ion-icon>
+        <ion-label>Início</ion-label>
+      </ion-item>
+      <ion-item routerLink="/eventos" routerLinkActive="active">
+        <ion-icon name="calendar-outline" slot="start"></ion-icon>
+        <ion-label>Eventos</ion-label>
+      </ion-item>
+      <ion-item routerLink="/tarefas" routerLinkActive="active">
+        <ion-icon name="checkbox-outline" slot="start"></ion-icon>
+        <ion-label>Tarefas</ion-label>
+      </ion-item>
+      <ion-item routerLink="/perfil" routerLinkActive="active">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-item>
+      <ion-item (click)="logout()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        <ion-label>Sair</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>

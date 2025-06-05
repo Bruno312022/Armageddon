@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     // Obtendo o corpo da requisição (JSON enviado)
     $input = json_decode(file_get_contents("php://input"), true);
     
-    if (isset($input[0])) { // Ajuste para ler os dados corretamente, pois estava com um nivel extra de encapsulamento -- ...droga...
+    if (isset($input[0])) { // Ajuste que eu fiz para ler os dados corretamente, pois estava com um nivel extra de encapsulamento 
         $input = $input[0];
     }
 

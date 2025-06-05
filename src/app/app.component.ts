@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   public appPages = [
     { title: 'Início', url: '/home', icon: 'home' },
-    { title: 'Pontos', url: '/folder/outbox', icon: 'leaf' }, //ciar pagina de troca de pontos
+    { title: 'Pontos', url: '/troca', icon: 'leaf' }, //ciar pagina de troca de pontos
     { title: 'Certificados', url: '/score', icon: 'ribbon' }
   ];
 

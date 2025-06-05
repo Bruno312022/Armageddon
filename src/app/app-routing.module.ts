@@ -46,11 +46,11 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./Components/home/home.module').then( m => m.HomePageModule)
-  },
-  {
+  },  {
     path: 'troca',
     loadChildren: () => import('./Components/troca/troca.module').then( m => m.TrocaPageModule)
   }
+
 ];
 
 @NgModule({

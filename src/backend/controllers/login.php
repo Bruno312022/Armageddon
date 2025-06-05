@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && $user['senha'] === $senha) { // Se usar senha hash, troque por password_verify($senha, $user['senha'])
+    if ($user && $user['senha'] === $senha) {
         exit(json_encode(["success" => true, "token" => md5(uniqid()), "user" => $user]));
     } else {
         exit(json_encode(["success" => false, "error" => "Usuário ou senha incorretos."]));
